@@ -1,1 +1,1 @@
-# nextcloud-aio-ceee
+# Nextcloud-aio Community Engineered Enterprise Edition (ceee) 
