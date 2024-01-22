@@ -64,6 +64,10 @@ echo "'"
 print_random
 echo "'"
 
+/bin/echo -n "API_KEY='"
+print_random
+echo "'"
+
 echo AIO_DATABASE_HOST='nextcloud-aio-database'
 echo NC_DOMAIN='ceee.dev'  
 echo NC_DOMAIN_BASE_DN='dc=ceee,dc=dev'  
