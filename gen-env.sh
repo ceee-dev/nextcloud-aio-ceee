@@ -20,10 +20,6 @@ echo "'"
 print_random
 echo "'"
 
-/bin/echo -n "LLDAP_JWT_SECRET='"
-print_random
-echo "'"
-
 /bin/echo -n "LLDAP_LDAP_USER_PASS='"
 print_random
 echo "'"
