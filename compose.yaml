@@ -338,7 +338,7 @@ services:
       - nextcloud-aio
 
   nextcloud-aio-stalwart:
-    documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/stalwart
+    #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/stalwart
     image: marcoambrosini/aio-stalwart:latest
     restart: unless-stopped
     ports:
@@ -356,7 +356,7 @@ services:
       - nextcloud_aio_caddy:/caddy:ro
 
   nextcloud-aio-local-ai:
-    documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/local-ai
+    #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/local-ai
     image: szaimen/aio-local-ai:latest
     restart: unless-stopped
     environment:
@@ -368,7 +368,7 @@ services:
       - ${NEXTCLOUD_DATADIR}:/nextcloud:ro
 
   nextcloud-aio-fail2ban:
-    documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/fail2ban
+    #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/fail2ban
     image: szaimen/aio-fail2ban:latest
     restart: unless-stopped
     cap_add:
@@ -381,7 +381,7 @@ services:
       - nextcloud_aio_vaultwarden_logs:/vaultwarden:ro
 
   nextcloud-aio-vaultwarden:
-    documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/vaultwarden
+    #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/vaultwarden
     image: vaultwarden/server:latest
     restart: unless-stopped
     ports:
@@ -400,7 +400,7 @@ services:
       - nextcloud_aio_vaultwarden_logs:/logs:rw
 
   nextcloud-aio-pihole:
-    documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/pi-hole
+    #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/pi-hole
     image: pihole/pihole:latest
     restart: unless-stopped
     init: false
@@ -418,7 +418,7 @@ services:
       - nextcloud_aio_pihole_dnsmasq:/etc/dnsmasq.d:rw
 
   nextcloud-aio-lldap:
-    documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/lldap
+    #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/lldap
     image: lldap/lldap:latest
     image_tag: v0
     internal_port: "17170"
