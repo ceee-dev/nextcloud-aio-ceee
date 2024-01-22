@@ -529,7 +529,7 @@ services:
       - CLI_ARGS= #optional
     volumes:
       - nextcloud-aio-duplicati/config:/config
-      -  nextcloud_aio_apache:/backups
+      - nextcloud_aio_apache:/backups
       
     ports:
       - 8200:8200
@@ -587,12 +587,15 @@ volumes:
     name: nextcloud_aio_nextcloud_data
 
 networks:
-  nextcloud-aio:
-    name: nextcloud-aio
+  nextcloud-aio-network:
     driver: bridge
-    enable_ipv6: false
+    driver_opts:
+      com.docker.network.bridge.name: br-nextcloud
+    enable_ipv6: true
     ipam:
       driver: default
       config:
         - subnet: ${IPV4_NETWORK:-172.22.1}.0/24
         - subnet: ${IPV6_NETWORK:-fd4d:6169:6c63:6f77::/64}
+    
+
