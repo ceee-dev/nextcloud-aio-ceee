@@ -525,7 +525,7 @@ services:
       - TZ=${TIMEZONE}
       - CLI_ARGS= #optional
     volumes:
-      - nextcloud-aio-duplicati/config:/config
+      - ./appdata/config:/config
       - nextcloud_aio_apache:/backups
       
     ports:
