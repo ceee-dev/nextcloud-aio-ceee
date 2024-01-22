@@ -3,19 +3,19 @@ services:
     depends_on:
       nextcloud-aio-onlyoffice:
         condition: service_started
-        required: false
+        #required: false
       nextcloud-aio-collabora:
         condition: service_started
-        required: false
+        #required: false
       nextcloud-aio-talk:
         condition: service_started
-        required: false
+        #required: false
       nextcloud-aio-nextcloud:
         condition: service_started
-        required: false
+        #required: false
       nextcloud-aio-notify-push:
         condition: service_started
-        required: false
+        #required: false
     image: nextcloud/aio-apache:latest
     init: true
     ports:
@@ -73,22 +73,22 @@ services:
     depends_on:
       nextcloud-aio-database:
         condition: service_started
-        required: false
+        #required: false
       nextcloud-aio-redis:
         condition: service_started
-        required: false
+        #required: false
       nextcloud-aio-clamav:
         condition: service_started
-        required: false
+        #required: false
       nextcloud-aio-fulltextsearch:
         condition: service_started
-        required: false
+        #required: false
       nextcloud-aio-talk-recording:
         condition: service_started
-        required: false
+        #required: false
       nextcloud-aio-imaginary:
         condition: service_started
-        required: false
+        #required: false
     image: nextcloud/aio-nextcloud:latest
     init: true
     expose:
@@ -468,7 +468,7 @@ services:
     depends_on:
       nextcloud-aio-database:
         condition: service_started
-        required: false
+        # required: false
     environment:
       - NC_DOMAIN=${NC_DOMAIN}
       - NC_PORT=443
@@ -505,7 +505,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=$TZ}
+      - TZ=${TIMEZONE}
       - SUBFOLDER=/ #optional
       - TITLE=Webtop #optional
     volumes:
@@ -525,7 +525,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
+      - TZ=${TIMEZONE}
       - CLI_ARGS= #optional
     volumes:
       - nextcloud-aio-duplicati/config:/config
