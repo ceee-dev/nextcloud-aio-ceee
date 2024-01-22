@@ -425,7 +425,7 @@ services:
     restart: unless-stopped
     ports:
       - ${APACHE_IP_BINDING}:17170:17170/tcp
-    apparmor_unconfined: true
+    #apparmor_unconfined: true
     environment:        
       - TZ=${TIMEZONE}
       - UID=65534
