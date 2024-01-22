@@ -354,6 +354,8 @@ services:
     volumes:
       - nextcloud_aio_stalwart:/opt/stalwart-mail:rw
       - nextcloud_aio_caddy:/caddy:ro
+    networks:
+      - nextcloud-aio
 
   nextcloud-aio-local-ai:
     #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/local-ai
@@ -366,6 +368,8 @@ services:
       - nextcloud_aio_localai_models:/models:rw
       - nextcloud_aio_localai_images:/tmp/generated/images/:rw
       - ${NEXTCLOUD_DATADIR}:/nextcloud:ro
+    networks:
+      - nextcloud-aio
 
   nextcloud-aio-fail2ban:
     #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/fail2ban
@@ -379,6 +383,8 @@ services:
     volumes:
       - nextcloud_aio_nextcloud:/nextcloud:ro
       - nextcloud_aio_vaultwarden_logs:/vaultwarden:ro
+    networks:
+      - nextcloud-aio
 
   nextcloud-aio-vaultwarden:
     #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/vaultwarden
@@ -398,6 +404,8 @@ services:
     volumes:
       - nextcloud_aio_vaultwarden:/data:rw
       - nextcloud_aio_vaultwarden_logs:/logs:rw
+    networks:
+      - nextcloud-aio
 
   nextcloud-aio-pihole:
     #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/pi-hole
@@ -416,6 +424,8 @@ services:
     volumes:
       - nextcloud_aio_pihole:/etc/pihole:rw
       - nextcloud_aio_pihole_dnsmasq:/etc/dnsmasq.d:rw
+    networks:
+      - nextcloud-aio
 
   nextcloud-aio-lldap:
     #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/lldap
@@ -437,6 +447,8 @@ services:
       - LLDAP_LDAP_USER_PASS
     volumes:
       - nextcloud_aio_lldap:/data:rw
+    networks:
+      - nextcloud-aio
 
   nextcloud-aio-memories:
     #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/memories
@@ -447,6 +459,8 @@ services:
       - NEXTCLOUD_HOST=https://${NC_DOMAIN}
     volumes:
       - ${NEXTCLOUD_DATADIR}:/mnt/ncdata:ro
+    networks:
+      - nextcloud-aio
 
   nextcloud-aio-facerecognition:
     #ocumentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/facerecognition
@@ -457,6 +471,8 @@ services:
       - API_KEY=${API_KEY}
     #aio_variables:
     # - nextcloud_memory_limit=4096M
+    networks:
+      - nextcloud-aio
 
   nextcloud-aio-dlna:
     #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/dlna
@@ -480,6 +496,8 @@ services:
       - NEXTCLOUD_DB_PASS=${DATABASE_PASSWORD}
     volumes:
       - ${NEXTCLOUD_DATADIR}:/data:ro
+    networks:
+      - nextcloud-aio
 
   nextcloud-aio-plex:
    # documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/plex
@@ -493,6 +511,8 @@ services:
       - nextcloud_aio_plex:/config:rw
       - ${NEXTCLOUD_DATADIR}:/data:ro
       - ${NEXTCLOUD_MOUNT}:${NEXTCLOUD_MOUNT}:ro
+    networks:
+      - nextcloud-aio
 
   nextcloud-aio-webtop: 
     image: lscr.io/linuxserver/ubuntu-openbox
@@ -515,6 +535,8 @@ services:
       - /dev/dri:/dev/dri #optional
     shm_size: "1gb" #optional
     restart: unless-stopped
+    networks:
+      - nextcloud-aio
 
   nextcloud-aio-duplicati:
     image: lscr.io/linuxserver/duplicati:latest
@@ -527,10 +549,11 @@ services:
     volumes:
       - ./appdata/config:/config
       - nextcloud_aio_apache:/backups
-      
     ports:
       - 8200:8200
     restart: unless-stopped
+    networks:
+      - nextcloud-aio
 
   nextcloud-aio-portainer:
       image: portainer/portainer-ce
@@ -538,6 +561,8 @@ services:
         - /var/run/docker.sock:/var/run/docker.sock
         - ./data/conf/portainer:/data
       restart: always
+      networks:
+        - nextcloud-aio
       
 volumes:
   nextcloud-aio-portainer:
