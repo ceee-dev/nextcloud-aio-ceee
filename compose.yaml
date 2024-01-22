@@ -609,7 +609,7 @@ volumes:
     name: nextcloud_aio_nextcloud_data
 
 networks:
-  nextcloud-aio-network:
+  nextcloud-aio:
     driver: bridge
     driver_opts:
       com.docker.network.bridge.name: br-nextcloud
