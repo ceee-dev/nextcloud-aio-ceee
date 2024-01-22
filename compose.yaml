@@ -438,8 +438,6 @@ services:
       - LLDAP_LDAP_USER_PASS
     volumes:
       - nextcloud_aio_lldap:/data:rw
-    backup_volumes:
-      - nextcloud_aio_lldap
 
   nextcloud-aio-memories:
     #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/memories
