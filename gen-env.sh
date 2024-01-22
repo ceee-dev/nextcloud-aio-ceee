@@ -93,3 +93,4 @@ echo REMOVE_DISABLED_APPS=yes
 echo TALK_PORT=3478 
 echo UPDATE_NEXTCLOUD_APPS="yes"
 echo IPV6_NETWORK='fd12:3456:789a:2::/64'
+echo TIMEZONE="Asia/Colombo"
