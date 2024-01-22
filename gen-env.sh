@@ -28,7 +28,7 @@ echo "'"
 print_random
 echo "'"
 
-/bin/echo -n "N nextcloud_aio_apacheEXTCLOUD_PASSWORD='"
+/bin/echo -n "NEXTCLOUD_PASSWORD='"
 print_random
 echo "'"
 
