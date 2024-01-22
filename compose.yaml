@@ -148,7 +148,7 @@ services:
     stop_grace_period: 600s
     restart: unless-stopped
     profiles:
-      - talk-recording
+      - debug
     networks:
       - nextcloud-aio
 
