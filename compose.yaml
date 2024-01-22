@@ -442,7 +442,7 @@ services:
       - nextcloud_aio_lldap
 
   nextcloud-aio-memories:
-    documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/memories
+    #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/memories
     image: radialapps/go-vod:latest
     restart: unless-stopped
     environment:
@@ -452,17 +452,17 @@ services:
       - ${NEXTCLOUD_DATADIR}:/mnt/ncdata:ro
 
   nextcloud-aio-facerecognition:
-    documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/facerecognition
+    #ocumentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/facerecognition
     image: matiasdelellis/facerecognition-external-model:latest
     restart: unless-stopped
     environment:
       - TZ=${TIMEZONE}
-      - API_KEY=some-super-secret-api-key
+      - API_KEY=${API_KEY}
     aio_variables:
       - nextcloud_memory_limit=4096M
 
   nextcloud-aio-dlna:
-    documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/dlna
+    #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/dlna
     image: thanek/nextcloud-dlna:latest
     restart: unless-stopped
     depends_on:
@@ -485,7 +485,7 @@ services:
       - ${NEXTCLOUD_DATADIR}:/data:ro
 
   nextcloud-aio-plex:
-    documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/plex
+   # documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/plex
     image: plexinc/pms-docker:latest
     restart: unless-stopped
     environment:
@@ -505,11 +505,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=
+      - TZ=$TZ}
       - SUBFOLDER=/ #optional
       - TITLE=Webtop #optional
     volumes:
-      - /path/to/data:/config
+      - /appdata/config:/config
       - /var/run/docker.sock:/var/run/docker.sock #optional
     ports:
       - 3000:3000
@@ -530,7 +530,7 @@ services:
     volumes:
       - nextcloud-aio-duplicati/config:/config
       -  nextcloud_aio_apache:/backups
-      - /path/to/source:/source
+      
     ports:
       - 8200:8200
     restart: unless-stopped
