@@ -416,31 +416,30 @@ services:
     volumes:
       - nextcloud_aio_pihole:/etc/pihole:rw
       - nextcloud_aio_pihole_dnsmasq:/etc/dnsmasq.d:rw
-  - services:
 
   nextcloud-aio-lldap:
-        documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/lldap
-        image: lldap/lldap:latest
-        image_tag: v0
-        internal_port: "17170"
-        restart: unless-stopped
-        ports:
-          - ${APACHE_IP_BINDING}:17170:17170/tcp
-        apparmor_unconfined: true
-        environment:
-          - TZ=${TIMEZONE}
-          - UID=65534
-          - GID=65534
-          - LLDAP_JWT_SECRET=${LLDAP_JWT_SECRET}
-          - LLDAP_LDAP_USER_PASS=${LLDAP_LDAP_USER_PASS}
-          - LLDAP_LDAP_BASE_DN=${NC_DOMAIN_BASE_DN}
-        secrets:
-          - LLDAP_JWT_SECRET
-          - LLDAP_LDAP_USER_PASS
-        volumes:
-          - nextcloud_aio_lldap:/data:rw
-        backup_volumes:
-          - nextcloud_aio_lldap
+    documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/lldap
+    image: lldap/lldap:latest
+    image_tag: v0
+    internal_port: "17170"
+    restart: unless-stopped
+    ports:
+      - ${APACHE_IP_BINDING}:17170:17170/tcp
+    apparmor_unconfined: true
+    environment:        
+      - TZ=${TIMEZONE}
+      - UID=65534
+      - GID=65534
+      - LLDAP_JWT_SECRET=${LLDAP_JWT_SECRET}
+      - LLDAP_LDAP_USER_PASS=${LLDAP_LDAP_USER_PASS
+      - LLDAP_LDAP_BASE_DN=${NC_DOMAIN_BASE_DN}
+    secrets:
+      - LLDAP_JWT_SECRET
+      - LLDAP_LDAP_USER_PASS
+    volumes:
+      - nextcloud_aio_lldap:/data:rw
+    backup_volumes:
+      - nextcloud_aio_lldap
 
   nextcloud-aio-memories:
     documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/memories
@@ -520,7 +519,7 @@ services:
     shm_size: "1gb" #optional
     restart: unless-stopped
 
-   nextcloud-aio-duplicati:
+  nextcloud-aio-duplicati:
     image: lscr.io/linuxserver/duplicati:latest
     container_name: duplicati
     environment:
@@ -542,7 +541,7 @@ services:
         - /var/run/docker.sock:/var/run/docker.sock
         - ./data/conf/portainer:/data
       restart: always
-
+      
 volumes:
   nextcloud-aio-portainer:
     name: nextcloud-aio-portainer
