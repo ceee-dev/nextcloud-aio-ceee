@@ -147,6 +147,8 @@ services:
       - APACHE_IP_BINDING=${APACHE_IP_BINDING}
     stop_grace_period: 600s
     restart: unless-stopped
+    profiles:
+      - talk-recording
     networks:
       - nextcloud-aio
 
