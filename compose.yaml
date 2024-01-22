@@ -586,7 +586,6 @@ volumes:
   nextcloud_aio_nextcloud_data:
     name: nextcloud_aio_nextcloud_data
 
-# Inspired by https://github.com/mailcow/mailcow-dockerized/blob/master/docker-compose.yml
 networks:
   nextcloud-aio:
     name: nextcloud-aio
