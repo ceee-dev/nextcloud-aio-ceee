@@ -250,7 +250,6 @@ services:
     shm_size: 2147483648
     restart: unless-stopped
     profiles:
-      - talk
       - talk-recording
     networks:
       - nextcloud-aio
