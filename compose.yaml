@@ -420,7 +420,7 @@ services:
   nextcloud-aio-lldap:
     #documentation: https://github.com/nextcloud/all-in-one/tree/main/community-containers/lldap
     image: lldap/lldap:latest
-    internal_port: "17170"
+    #internal_port: "17170"
     restart: unless-stopped
     ports:
       - ${APACHE_IP_BINDING}:17170:17170/tcp
